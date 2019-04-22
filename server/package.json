@@ -1,7 +1,8 @@
 {
   "scripts": {
     "test": "jest --watch --verbose",
-    "server": "nodemon index.js"
+    "server": "nodemon index.js",
+    "start": "node index.js"
   },
   "devDependencies": {
     "jest": "^24.7.1",
