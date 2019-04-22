@@ -1,9 +1,9 @@
 // Update with your config settings.
 localPbConnection = {
   host: 'localhost',
-  database: 'games',
-  user: 'Elan',
-  password: 'pass'
+  database: 'Database',
+  user: process.env.DB_USERS,
+  password: process.env.DB_PASS
 }
 
 const prodDbConnection = process.env.DATABASE_URL || localPbConnection
