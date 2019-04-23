@@ -7,7 +7,8 @@ module.exports = {
     update,
     remove,
     dataInsert,
-    dataRemove
+    dataRemove,
+    dataUpdate
 }
 
 
@@ -53,4 +54,10 @@ function dataRemove(id) {
     return db('sleepData')
     .where({id})
     .del()
+}
+
+function dataUpdate(id, user){
+    return db('sleepData')
+    .where({ id })
+    .update(user)
 }

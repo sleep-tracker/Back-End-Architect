@@ -106,12 +106,35 @@ router.delete('/data/delete/:id', (req, res) => {
             if (!deleted) {
                 res
                 .status(404)
-                .json({message: `Data with the specified ID of ${id} does not exist.`})
+                .json({message: `Data Entry with the specified ID of ${id} does not exist.`})
             } else {
                 res.json({message: 'Item Has Been Deleted.'}).end()
             }
         })
         .catch(error => res.status(500).json(error))
+    
+})
+
+
+router.patch('/data/edit/:id', (req, res) => {
+    const id = req.params.id
+    const body = req.body
+
+        helpers
+        .dataUpdate(id, body)
+        .then(updated => {
+            if (!updated) {
+                res
+                .status(404)
+                .json({message: `Data Entry with a specified ID of ${id} does not exist!`})
+            } else {
+                res
+                .status(200)
+                .json({message: `Success! You updated ${updated} item(s)`})
+            }  
+        })
+        .catch(error => res.status(500).json(error))
+    
     
 })
 
