@@ -4,7 +4,7 @@ exports.seed = function(knex, Promise) {
   return knex('sleepData').del().then(function(){
     return knex('sleepData').insert([
       {
-        user_id: 1,
+        user_id: 3,
         sleepDate: "04/22/2019",
         wakeDate: "04/23/2019",
         sleepTime: "11:45 pm",
@@ -13,7 +13,7 @@ exports.seed = function(knex, Promise) {
         moodAfter: 3
       },
       {
-        user_id: 2,
+        user_id: 3,
         sleepDate: "04/23/2019",
         wakeDate: "04/24/2019",
         sleepTime: "11:45 pm",
@@ -22,7 +22,7 @@ exports.seed = function(knex, Promise) {
         moodAfter: 2
       },
       {
-        user_id: 2,
+        user_id: 3,
         sleepDate: "04/24/2019",
         wakeDate: "04/25/2019",
         sleepTime: "11:45 pm",
@@ -31,7 +31,7 @@ exports.seed = function(knex, Promise) {
         moodAfter: 4
       },
       {
-        user_id: 1,
+        user_id: 4,
         sleepDate: "04/10/2019",
         wakeDate: "04/11/2019",
         sleepTime: "11:45 pm",

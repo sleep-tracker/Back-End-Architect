@@ -12,18 +12,7 @@ router.get('/', restricted, (req, res) => {
     // ONLY the user that matches the token is being returned
     const id = req.decodedJWT.subject
 
-    // helpers
-    // .get()
-    // .then(users => {
-    //     if(!users){
-    //         res.status(404).send('User Doesn\'t Exist!')
-    //     } else {
-    //         res.json(users)
-    //     }
-        
-    // })
-    // .catch(error => res.status(500).json(error))
-    
+
     db('users as u')
     .where('u.id', id)
     // .first()
@@ -31,7 +20,18 @@ router.get('/', restricted, (req, res) => {
         if(!users){
             res.status(404).send('User Doesn\'t Exist!')
         } else {
-            res.json(users)
+            db('sleepData')
+            .where('sleepData.user_id', id)
+            .then(data => {
+                res.status(200).json(
+                    
+                    users.map(user => ({
+                        ...user,
+                        data
+                    })
+                    )
+                )
+            })
         }
         
     })
@@ -78,3 +78,45 @@ router.delete('/', (req, res) => {
 })
 
 module.exports = router
+
+
+
+
+
+
+
+
+
+
+
+/// Fetching only users data
+
+// router.get('/', restricted, (req, res) => {
+//     // ONLY the user that matches the token is being returned
+//     const id = req.decodedJWT.subject
+
+//     // helpers
+//     // .get()
+//     // .then(users => {
+//     //     if(!users){
+//     //         res.status(404).send('User Doesn\'t Exist!')
+//     //     } else {
+//     //         res.json(users)
+//     //     }
+        
+//     // })
+//     // .catch(error => res.status(500).json(error))
+    
+//     db('users as u')
+//     .where('u.id', id)
+//     // .first()
+//     .then(users => {
+//         if(!users){
+//             res.status(404).send('User Doesn\'t Exist!')
+//         } else {
+//             res.json(users)
+//         }
+        
+//     })
+//     .catch(error => res.status(500).json(error))
+// })
