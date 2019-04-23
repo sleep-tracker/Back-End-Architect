@@ -6,7 +6,9 @@ module.exports = {
     findBy,
     update,
     remove,
-    dataInsert
+    dataInsert,
+    dataRemove,
+    dataUpdate
 }
 
 
@@ -40,10 +42,22 @@ function remove(id) {
 }
 
 
-
+// for SLEEEP DATA
 function dataInsert(data, id) { 
     return db('sleepData')
     // .where(data.user_id === id)
     .insert(data, data.user_id = id)
     .then(ids => ids[0])
+}
+
+function dataRemove(id) {
+    return db('sleepData')
+    .where({id})
+    .del()
+}
+
+function dataUpdate(id, user){
+    return db('sleepData')
+    .where({ id })
+    .update(user)
 }
