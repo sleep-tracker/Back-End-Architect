@@ -4,7 +4,6 @@ exports.up = function(knex, Promise) {
         tbl.increments()
         tbl.integer('user_id')
         .unsigned()
-        .notNullable()
         .references('id')
         .inTable('users')
         .onDelete('CASCADE')
@@ -15,6 +14,7 @@ exports.up = function(knex, Promise) {
         tbl.varchar('wakeTime').notNullable()
         tbl.integer('moodBefore').notNullable()
         tbl.integer('moodAfter').notNullable()
+        tbl.integer('moodDuring').notNullable()
     })
   };
 

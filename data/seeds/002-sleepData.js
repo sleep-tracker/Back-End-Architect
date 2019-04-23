@@ -10,7 +10,8 @@ exports.seed = function(knex, Promise) {
         sleepTime: "11:45 pm",
         wakeTime: "08:20 am",
         moodBefore: 2,
-        moodAfter: 3
+        moodAfter: 3,
+        moodDuring: 1
       },
       {
         user_id: 3,
@@ -19,7 +20,8 @@ exports.seed = function(knex, Promise) {
         sleepTime: "11:45 pm",
         wakeTime: "08:20 am",
         moodBefore: 2,
-        moodAfter: 2
+        moodAfter: 2,
+        moodDuring: 3
       },
       {
         user_id: 3,
@@ -28,7 +30,8 @@ exports.seed = function(knex, Promise) {
         sleepTime: "11:45 pm",
         wakeTime: "08:20 am",
         moodBefore: 2,
-        moodAfter: 4
+        moodAfter: 4,
+        moodDuring: 2
       },
       {
         user_id: 4,
@@ -37,7 +40,8 @@ exports.seed = function(knex, Promise) {
         sleepTime: "11:45 pm",
         wakeTime: "08:20 am",
         moodBefore: 1,
-        moodAfter: 3
+        moodAfter: 3,
+        moodDuring: 2
       }
     ]);
   })

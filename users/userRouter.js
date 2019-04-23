@@ -77,6 +77,25 @@ router.delete('/', (req, res) => {
     
 })
 
+
+// DATA endpoints
+
+router.post('/data/add', (req, res) => {
+    const body = req.body
+    const token = req.headers.authorization
+    req.decodedJWT = jsonWT.decode(token)
+    const id = req.decodedJWT.subject
+
+    //Checks if there is "@" present
+    helpers
+    
+    .dataInsert(body, id)
+    
+    .then(response => {
+        res.status(200).json(id)
+    })
+})
+
 module.exports = router
 
 
