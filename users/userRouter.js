@@ -58,7 +58,7 @@ router.get('/chart/data', restricted, (req, res) => {
                     res.status(200).json(data)
                 } else {
                     const array = []
-                    for( i = 0;i < data.length; i++){
+                    for( i = 0; i < data.length; i++){
                          
                        
                      }
