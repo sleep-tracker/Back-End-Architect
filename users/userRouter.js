@@ -54,12 +54,15 @@ router.get('/chart/data', restricted, (req, res) => {
             db('sleepData')
             .where('sleepData.user_id', id)
             .then(data => {
-                if (data.length === 4) {
+                if (data.length < 4) {
                     res.status(200).json(data)
                 } else {
                     const array = []
-                    for( i = 0; i < data.length; i++){
-                         
+                    for( i = data.length - 1; i >=0 ; i--){
+                        if(array.length < 4){
+                            D1 = data[i] 
+                            array.push(D1)
+                        }
                        
                      }
                      res.status(200).json(array)
@@ -70,7 +73,7 @@ router.get('/chart/data', restricted, (req, res) => {
     })
     .catch(error => res.status(500).json(error))
 })
-/////
+
 
 
 router.put('/', (req, res)=> {
@@ -127,7 +130,7 @@ router.post('/data/add', (req, res) => {
     .dataInsert(body, id)
     
     .then(response => {
-        res.status(200).json(id)
+        res.status(200).json({message: `Data ID is ${id}`})
     })
 })
 
@@ -143,7 +146,7 @@ router.delete('/data/delete/:id', (req, res) => {
                 .status(404)
                 .json({message: `Data Entry with the specified ID of ${id} does not exist.`})
             } else {
-                res.json({message: 'Item Has Been Deleted.'}).end()
+                res.status(200).json({message: 'Item Has Been Deleted.'}).end()
             }
         })
         .catch(error => res.status(500).json(error))
@@ -282,7 +285,7 @@ router.get('/average', restricted, async (req, res) => {
         }
     }
 
-    res.status(200).json({bestSleep: bestObj.hours})
+    res.status(200).json({bestSleep: `Your Optimal Sleep is ${bestObj.hours} hrs`})
     // console.log(averageArray)
     // console.log(array)
     // moodBefore + moodAfter + moodDuring === 4
