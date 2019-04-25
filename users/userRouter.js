@@ -38,6 +38,41 @@ router.get('/', restricted, (req, res) => {
     .catch(error => res.status(500).json(error))
 })
 
+
+router.get('/chart/data', restricted, (req, res) => {
+    // ONLY the user that matches the token is being returned
+    const id = req.decodedJWT.subject
+
+
+    db('users as u')
+    .where('u.id', id)
+    // .first()
+    .then(users => {
+        if(!users){
+            res.status(404).send('User Doesn\'t Exist!')
+        } else {
+            db('sleepData')
+            .where('sleepData.user_id', id)
+            .then(data => {
+                if (data.length === 4) {
+                    res.status(200).json(data)
+                } else {
+                    const array = []
+                    for( i = data.length - 1; i >=0 ; i--){
+                        D1 = data[2] 
+                       array.push(D1)
+                     }
+                     res.status(200).json(array)
+                }
+            })
+        }
+        
+    })
+    .catch(error => res.status(500).json(error))
+})
+
+
+
 router.put('/', (req, res)=> {
     //GETTING ID from the decoded token
     const token = req.headers.authorization
