@@ -8,7 +8,8 @@ module.exports = {
     remove,
     dataInsert,
     dataRemove,
-    dataUpdate
+    dataUpdate,
+    dataGet
 }
 
 
@@ -43,6 +44,11 @@ function remove(id) {
 
 
 // for SLEEEP DATA
+function dataGet(id) {
+    return db('sleepData')
+    .where('user.id')
+}
+
 function dataInsert(data, id) { 
     return db('sleepData')
     // .where(data.user_id === id)
