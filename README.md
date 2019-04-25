@@ -267,6 +267,20 @@
 | -------------- | ------ | -------- | ------------------------ |
 | `Content-Type` | String | Yes      | Must be application/json |
 
+#### Example
+
+```
+  {
+    "sleepDate": "04-22-2019",
+    "wakeDate": "04-23-2019",
+    "sleepTime": "11:15 pm",
+    "wakeTime": "08:20 am",
+    "moodBefore": 2,
+    "moodAfter": 4,
+    "moodDuring": 3
+  }
+  ```
+
 #### Response
 ##### 200 (ok)
 ###### Example Response
